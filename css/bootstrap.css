@@ -47,6 +47,11 @@ images{
   padding-top: 45px;
 }
 
+.carousel_advert {
+  position: relative;
+  padding-top: 5px;
+}
+
 .container-fluid {
 	padding-left: 10px;
 	padding-right: 10px;
@@ -54,11 +59,59 @@ images{
 	margin-left: auto;
 	
 }
+/*banner class style for font*/
+.banner {
+	text-shadow:1px 1px 2px black, 
+				2px 2px 2px black,
+				4px 4px 2px black;
+}
+/*advertisement class style for font*/
+.advertisement {
+	text-shadow:1px 1px 2px black, 
+				2px 2px 2px black,
+				4px 4px 2px black;
+}
+
+/*Footer properties*/
+footer {
+	background-color: #F1F1F1;
+	
+}
+
+#about_us{
+ float:left;
+ width:33%;  
+ padding:5px;
+ 
+ text-align: center;
+}
+#contacts{
+ float:left;
+ width:33%;        
+ text-align:center;
+ padding:5px;
+ 
+ }
+#get_started{
+float: left;
+width:33%; 
+text-align: center;
+padding:5px;
+
+}
+#copyright{
+text-align:center;
+width:100%;
+position:relative;
+
+}
+/*End of Footer propterties*/
+
 /*  CSS for Login/Registration section*/
 .accountContent{
 	max-width: 350px;
 	
-}
+	}
 .form_wrapper{
 	background:#fff;
 	margin:0 auto;
