@@ -14,6 +14,61 @@
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	
+	<script>
+/*SCRIPTS FOR LOGIN SECTION*/
+		
+/*Script for sliding down login section and bring up the register section*/
+	$(document).ready(function(){
+    	$("#registerButton").click(function(){
+        	$("#loginPanel").slideUp();
+			$("#registerPanel").slideDown();
+    	});
+   });
+		
+/*Script for sliding down login section and bring up the forgot your password page*/
+	$(document).ready(function(){
+    	$("#forgotPassButton").click(function(){
+        	$("#loginPanel").slideUp();
+			$("#forgotPassPanel").slideDown();
+    	});
+   });			
+		
+		
+/*SCRIPTS FOR REGISTER SECTION*/		
+		
+/*Script for sliding down register section and bring up the login page*/
+	$(document).ready(function(){
+    	$("#loginFromRegisterButton").click(function(){
+        	$("#registerPanel").slideUp();
+			$("#loginPanel").slideDown();
+    	});
+   });
+		
+	
+/*SCRIPTS FOR FORGOT YOUR PASSWORD SECTION*/
+		
+/*Script for sliding down forgot Password section and bring up the login page*/
+	$(document).ready(function(){
+    	$("#loginFromForgotPassButton").click(function(){
+        	$("#forgotPassPanel").slideUp();
+			$("#loginPanel").slideDown();
+    	});
+   });
+		
+/*Script for sliding down login section and bring up the forgot your password page*/
+	$(document).ready(function(){
+    	$("#registerFromForgotPassButton").click(function(){
+        	$("#forgotPassPanel").slideUp();
+			$("#registerPanel").slideDown();
+    	});
+   });		
+</script>	
+		
+		
+		
   </head>
   <body style="padding-top: 5px">
   <div id="wrapper">
@@ -101,14 +156,16 @@
              <a class="right carousel-control" role="button" data-slide="next" onClick="$('#carousel2').carousel('next')" style="background:none !important"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><span class="sr-only">Next</span></a></div>
          </div>
          
-         <div class="col-lg-6">
-         	<div class="accountContent">
-          	<div id="form_wrapper" class="form_wrapper">
-					<form class="register">
-						<h3>Register</h3>
+         
+         <!-- Account Login and Registration-->
+         <div class="col-lg-2">
+         	
+                 	 <div class="registerForm" id="registerPanel">
+          		
+						<h3 class="registerH3">Register</h3>
 						<div class="column">
 							<div>
-								<label>First Name:</label>
+ 								<label>First Name:</label>
 								<input type="text" />
 								<span class="error">This is an error</span>
 							</div>
@@ -146,11 +203,15 @@
 								<span>Send me updates</span>
 							</div>
 							<input type="submit" value="Register" />
-							<a href="index.html" rel="login" class="linkform">You have an account already? Log in here</a>
+							<a id="loginFromRegisterButton" href="#" rel="login" class="linkform">You have an account already? Log in here</a>
 							<div class="clear"></div>
 						</div>
-					</form>
-					<form class="login active">
+					
+					</div>
+					
+					
+					<div class="loginContent" id="loginPanel">
+					
 						<h3>Login</h3>
 						<div>
 							<label>Username:</label>
@@ -158,17 +219,21 @@
 							<span class="error">This is an error</span>
 						</div>
 						<div>
-							<label>Password: <a href="forgotPassword.html" rel="forgot_password" class="forgot linkform">Forgot your password?</a></label>
+							<label>Password: </label>
 							<input type="password" placeholder="Password"/>
+							<a id="forgotPassButton" href="#" rel="forgot_password" class="forgot linkform"><b>Forgot your password?</b></a>
 							<span class="error">This is an error</span>
 						</div>
 						<div class="bottom">
 							<div class="remember"><input type="checkbox" /><span>Keep me logged in</span></div>
 							<input type="submit" value="Login" formmethod="post"></input>
-							<a href="register.html" rel="register" class="linkform">You don't have an account yet? Register here</a>
+							<a id="registerButton" href="#" rel="register" class="linkform">You don't have an account yet? Register here</a>
 							<div class="clear"></div>
 						</div>
-					</form>
+					
+					</div>
+					
+					<div class="forgotPassword" id="forgotPassPanel">
 					<form class="forgot_password">
 						<h3>Forgot Password</h3>
 						<div>
@@ -178,14 +243,15 @@
 						</div>
 						<div class="bottom">
 							<input type="submit" value="Send reminder"></input>
-							<a href="index.html" rel="login" class="linkform">Suddenly remebered? Log in here</a>
-							<a href="register.html" rel="register" class="linkform">You don't have an account? Register here</a>
+							<a id="loginFromForgotPassButton" href="#" rel="login" class="linkform">Suddenly remebered? Log in here</a>
+						
+							<a id="registerFromForgotPassButton" href="#" rel="register" class="linkform">You don't have an account? Register here</a>
 							<div class="clear"></div>
 						</div>
 					</form>
 				</div>
-          	
-          </div>
+	  
+          
          </div>
   </div>
 <div class="container-fluid">
@@ -243,7 +309,6 @@
   
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
 	<script src="js/jquery-1.11.3.min.js">
-
 		$(function() {
 					//the form wrapper (includes all forms)
 				var $form_wrapper	= $('#form_wrapper'),
@@ -256,6 +321,7 @@
 				$form_wrapper.children('form').each(function(i){
 					var $theForm	= $(this);
 					//solve the inline display none problem when using fadeIn fadeOut
+
 					if(!$theForm.hasClass('active'))
 						$theForm.hide();
 					$theForm.data({
@@ -317,9 +383,14 @@
 			});
 	</script>
 
+
+
+
+
 	<!-- Include all compiled plugins (below), or include individual files as needed --> 
-	<script src="js/jquery-1.11.3.min.js"></script>
-	<script src="js/bootstrap.js"></script>
+	
+
+
 	</div>
   </body>
 </html>
