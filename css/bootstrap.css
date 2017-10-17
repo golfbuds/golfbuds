@@ -75,35 +75,29 @@ images{
 /*Footer properties*/
 footer {
 	background-color: #F1F1F1;
-	
 }
 
 #about_us{
- float:left;
- width:33%;  
- padding:5px;
- 
- text-align: center;
+	 float:left;
+	 width:33%;  
+	 padding:5px;
+	 text-align: left;
 }
 #contacts{
- float:left;
- width:33%;        
- text-align:center;
- padding:5px;
- 
- }
+	 float:left;
+	 width:33%;        
+	 text-align:center;
+	 padding:5px;
+}
 #get_started{
-float: left;
-width:33%; 
-text-align: center;
-padding:5px;
-
+	float: left;
+	width:33%; 
+	text-align: center;
+	padding:5px;
 }
 #copyright{
-text-align:center;
-width:100%;
-position:relative;
-
+	text-align:center;
+	width:100%;
 }
 /*End of Footer propterties*/
 
@@ -115,10 +109,179 @@ position:relative;
 *THE ORIGINAL CSS CODE HAS BEEN ADDED
 *
 *PASTE CODE BELOW HERE
+*
+* Using the # signifies an id, while using . signifies class
+* #registerH3 = h3 tag with id="registerH3", if it was class="registerH3"
+* it would be .registerH3
+*
 */
 
+/*The container that contains the row of the advertisement scroll/deal scroller and the register
+ 	and login section*/
+#AdvertRegisterContainer{
+	background-color:#F1F1F1;
+}
 
+/*Entire register/login/forgot password div, this registerDiv contains it all*/
+#registerDiv {
+	background:#444;
+	border:2px solid #ddd;
+	width:auto;
+	font-size:16px;
+	-moz-box-shadow:1px 1px 7px #ccc;
+	-webkit-box-shadow:1px 1px 7px #ccc;
+	box-shadow:1px 1px 7px #ccc;
+	padding: 0px;
+	position:relative;
+}
 
+/*Div that contains the area where the user inputs their username/password etc*/
+#userInput{
+	background: #fff;
+}
+
+/*The register/login header 3 style*/
+#registerH3, #loginH3, #forgotPassH3, #registerBottom, #loginBottom, #forgotPassBottom{
+	padding: 0px 30px 20px 30px;
+	background-color: #444;
+	color: white;
+	font-size: 25px;
+	border-bottom: 1px solid #ddd;
+	
+}
+
+/*The register/login bottom style*/
+#registerBottom, #loginBottom, #forgotPassBottom{
+	background-color:#444;
+	border-top:1px solid #ddd;
+	margin-top:15px;
+	clear:both;
+	color:#fff;
+	text-shadow:1px 1px 1px #000;
+}
+
+/*The register/login bottom button style*/
+#registerButton ,#loginFromForgotPassButton, #registerFromForgotPassButton, #loginFromRegisterButton {
+	display:block;
+	clear:both;
+	padding:10px 30px;
+	text-align:right;
+	color:#ffa800;
+	text-shadow:1px 1px 1px #000;
+	font-size: 12px;
+	
+}
+
+/*Forgot your password link on login*/
+#forgotPassButton{
+	float:right;
+	font-style:italic;
+	line-height:24px;
+	color:#ffa800;
+	text-shadow:1px 1px 1px #fff;
+	font-size: 12px;
+}
+
+/*Style for when you hover over the forgot your password*/
+#registerDiv a.forgotPassButton:hover{
+	color:#000;
+}
+
+/*Entire DIV(registerDiv) that encompasses the entire register/login/forgot password section
+this css style is for the login/register/send reminder buttons*/
+#registerDiv input[type="submit"]{
+	background: #e3e3e3;
+	border: 1px solid #ccc;
+	color: #333;
+	font-family: "Trebuchet MS", "Myriad Pro", sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 8px 0 9px;
+	text-align: center;
+	width: 150px;
+	cursor:pointer;
+	float:right;
+	margin:15px 20px 10px 10px;
+	text-shadow: 0 1px 0px #fff;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-moz-box-shadow: 0px 0px 2px #fff inset;
+	-webkit-box-shadow: 0px 0px 2px #fff inset;
+	box-shadow: 0px 0px 2px #fff inset;
+}
+
+/*Styles for all the labels(Username:, Password:, First Name:, etc) */
+#registerDiv label{
+	display:block;
+	padding:10px 30px 0px 30px;
+	margin:10px 0px 0px 0px;
+}
+
+/*Styles for all the div with class column(the textfields for each input)*/
+#registerDiv .column{
+	width:47%;
+	float:left;
+}
+
+/*Styles for the textboxes that uses enters*/
+#registerDiv input[type="text"], #registerDiv input[type="password"]{
+	border: solid 1px #E5E5E5;
+	margin: 5px 30px 0px 30px;
+	padding: 9px;
+	display:block;
+	font-size:16px;
+	width:76%;
+	background: #FFFFFF;
+	background: 
+		-webkit-gradient(
+			linear, 
+			left top, 
+			left 25, 
+			from(#FFFFFF), 
+			color-stop(4%, #EEEEEE), 
+			to(#FFFFFF)
+		);
+	background: 
+		-moz-linear-gradient(
+			top, 
+			#FFFFFF,
+			#EEEEEE 1px, 
+			#FFFFFF 25px
+			);
+	-moz-box-shadow: 0px 0px 8px #f0f0f0;
+	-webkit-box-shadow: 0px 0px 8px #f0f0f0;
+	box-shadow: 0px 0px 8px #f0f0f0;
+}
+
+/*Style for when user clicks on the textbox*/
+#registerDiv input[type="text"]:focus, #registerDiv input[type="password"]:focus{
+	background:#feffef;
+}
+
+/*Entire DIV(registerDiv) that encompasses the entire register/login/forgot password section
+this css style is for the login/register/send reminder buttons when you hover over them*/
+#registerDiv input[type="submit"]:hover {
+	background: #d9d9d9;
+	-moz-box-shadow: 0px 0px 2px #eaeaea inset;
+	-webkit-box-shadow: 0px 0px 2px #eaeaea inset;
+	box-shadow: 0px 0px 2px #eaeaea inset;
+	color: #222;
+}
+
+/*The styles for the keep me logged in/send me updates checkbox*/
+#registerDiv div.remember{
+	float:left;
+	width:140px;
+	margin:20px 0px 20px 30px;
+	font-size:11px;
+}
+
+/*The styles for the keep me logged in/send me updates checkbox*/
+#registerDiv div.remember input{
+	float:left;
+	margin:2px 5px 0px 0px;
+}
 
 /*
 *PASTE RegisterLoginPasswordCSSCode.txt ABOVE HERE
@@ -2376,7 +2539,7 @@ pre code {
     margin-left: 25%;
   }
   .col-lg-offset-2 {
-    margin-left: 16.66666667%;
+	margin-left: 16.66666667%;
   }
   .col-lg-offset-1 {
     margin-left: 8.33333333%;
