@@ -125,7 +125,7 @@ footer {
 /*Entire register/login/forgot password div, this registerDiv contains it all*/
 #registerDiv {
 	background:#444;
-	border:2px solid #ddd;
+	border:3px solid #ddd;
 	width:auto;
 	font-size:16px;
 	-moz-box-shadow:1px 1px 7px #ccc;
@@ -141,7 +141,8 @@ footer {
 }
 
 /*The register/login header 3 style*/
-#registerH3, #loginH3, #forgotPassH3, #registerBottom, #loginBottom, #forgotPassBottom{
+#registerH3, #loginH3, #forgotPassH3, #guestRegisterH3, #registerBottom,
+#guestRegisterBottom, #loginBottom, #forgotPassBottom{
 	padding: 0px 30px 20px 30px;
 	background-color: #444;
 	color: white;
@@ -151,7 +152,7 @@ footer {
 }
 
 /*The register/login bottom style*/
-#registerBottom, #loginBottom, #forgotPassBottom{
+#registerBottom, #guestRegisterBottom, #loginBottom, #forgotPassBottom{
 	background-color:#444;
 	border-top:1px solid #ddd;
 	margin-top:15px;
@@ -161,7 +162,8 @@ footer {
 }
 
 /*The register/login bottom button style*/
-#registerButton ,#loginFromForgotPassButton, #registerFromForgotPassButton, #loginFromRegisterButton {
+#registerButton,#loginFromForgotPassButton, #registerFromForgotPassButton,
+#guestFromRegisterButton, #loginFromGuestRegisterButton, #loginFromRegisterButton {
 	display:block;
 	clear:both;
 	padding:10px 30px;
@@ -220,8 +222,9 @@ this css style is for the login/register/send reminder buttons*/
 
 /*Styles for all the div with class column(the textfields for each input)*/
 #registerDiv .column{
-	width:47%;
-	float:left;
+	width: 49%;
+	float: left;
+	padding-bottom: 10px;
 }
 
 /*Styles for the textboxes that uses enters*/
@@ -297,8 +300,88 @@ this css style is for the login/register/send reminder buttons when you hover ov
 	display: none;
 }
 
+/*Hide guest Register for initial start up*/
+#guestRegisterPanel{
+	display: none;
+}
+
+/*CSS for Modal(popup window) when users begin guest account
+creation procress by asking them for their traits*/
+
+/* The Modal (background) */
+#registerModal {
+    display: none; /* Hidden by default */
+    position: fixed !important; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modalColumn{
+	width: 50%;	
+	float: left;
+}
+
+
+.modalQuestion1, .modalQuestion2, .modalQuestion3, .modalQuestion4 {
+	font-size: 18px;
+	padding-left: 30px;
+}
 
 /* End of Login/Registration CSS section*/
+
+
+
+/*Beginning of Profile page CSS section*/
+
+
+#profileDropDownMenu{
+	float: right;
+	padding-top: 8px;
+	padding-right: 5px;
+}
+
+
+
+
+
+
+
+
+/*End of Profile page CSS section*/
+
+
+
 
 /*
 
@@ -5259,11 +5342,12 @@ a.badge:focus {
   margin-left: 3px;
 }
 .jumbotron {
-  padding-top: 30px;
-  padding-bottom: 30px;
-  margin-bottom: 30px;
-  color: inherit;
-  background-color: #eee;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	margin-bottom: 30px;
+	color: inherit;
+	background-color: #eee;
+
 }
 .jumbotron h1,
 .jumbotron .h1 {

@@ -46,8 +46,27 @@
 			$("#loginPanel").slideDown();
     	});
    });
-		
+
+/*Script for sliding down register panel to reveal guest register*/		
+	$(document).ready(function(){
+    	$("#guestFromRegisterButton").click(function(){
+        	$("#registerPanel").slideUp();
+			$("#guestRegisterPanel").slideDown();
+    	});
+   });
 	
+		
+/*Script for sliding down guest login and revealing login*/		
+	$(document).ready(function(){
+    	$("#loginFromGuestRegisterButton").click(function(){
+        	$("#guestRegisterPanel").slideUp();
+			$("#loginPanel").slideDown();
+    	});
+   });
+
+/*Script for Modal(popup window) when user creates guest account*/		
+
+		
 /*SCRIPTS FOR FORGOT YOUR PASSWORD SECTION*/
 		
 /*Script for sliding down forgot Password section and bring up the login page*/
@@ -66,11 +85,11 @@
     	});
    });		
 </script>	
-		
+	
 		
 		
   </head>
-  <body style="padding-top: 5px">
+  <body style="padding-top: 5px">  
   <div id="wrapper">
   	<div class="navbarTopFixed">
   		<nav class="navbar navbar-default navbar-fixed-top">
@@ -158,6 +177,7 @@
          </div>       
          
          <!-- Account Login and Registration-->
+         
          <div id="registerDiv" class="col-lg-2 col-lg-offset-1">
 				<form action="php/insert_into.php" method="post">
                 	 
@@ -174,6 +194,10 @@
 									<label>Last Name:</label>
 									<input type="text" name="lastname"/>
 								</div>
+								<div>
+									<label>Password:</label>
+									<input type="password" name="passW"/>
+								</div>
 							</div>
 							<div class="column">
 								<div>
@@ -185,7 +209,7 @@
 									<input type="text" name="em" />
 								</div>
 								<div>
-									<label>Password:</label>
+									<label>Re-enter Password:</label>
 									<input type="password" name="passW"/>
 								</div>
 							</div>
@@ -194,15 +218,110 @@
 									<input type="checkbox" />
 									<span>Send me updates</span>
 								</div>
-								<input type="submit" value="Register" />
-								<a id="loginFromRegisterButton" href="#" rel="login" class="linkform">You have an account already? Log in here</a>
+									<input id="guestRegisterSubmitButton" type="submit" value="Register" />
+									<a id="loginFromRegisterButton" href="#" rel="login" class="linkform">You have an account already? Log in here</a>
+									<a id="guestFromRegisterButton" href="#" rel="login" class="linkform">Want to try us out before committing? Create a guest account!</a>
 								<div class="clear"></div>
 							</div>
 
 						</div>
 					</div>	
 				</form>	
-					<!-- Code for the Login section-->
+				
+			<!--Code for guest registration-->
+			
+				 
+			 	 <div class="guestRegisterForm" id="guestRegisterPanel">
+          				<div id="userInput">
+							<h3 id="guestRegisterH3" class="guestRegisterH3">Guest Register</h3>
+							<div class="column">
+								<div>
+									<label>First Name:</label>
+									<input type="text" name="firstname" />
+								</div>
+								<div>
+									<label>Last Name:</label>
+									<input type="text" name="lastname"/>
+								</div>
+							</div>
+							<div class="column">
+								<div>
+									<label>Email:</label>
+									<input type="text" name="em" />
+								</div>
+							</div>
+							<div id="guestRegisterBottom" class="bottom">
+								<input type="submit" value="Register" id="submitGuestRegisterButton"/>
+									<a id="loginFromGuestRegisterButton" href="#" rel="login" class="linkform">You have an account already? Log in here</a>
+								<div class="clear"></div>
+							</div>
+
+						
+					</div>	
+				</div>	
+		
+		<!-- Code for modal(popup window) after user begins creation of 
+				guest account to further ask user for their traits-->
+			
+
+			<form action="php/insert_into.php" method="post">				
+				<div id="registerModal" class="modal-content">
+				  <div class="modal-content"> 
+					  <div class="modal-header">
+							<span class="close">&times;</span>
+							<h3>Please answer the follow questions to the best of
+								your ability. Rating your answers from a scale of 1 to 5. (<b>5 Being you strongly agree
+								and 1 being you disaree</b>)</h3>
+					  </div>
+					  <div class="modal-body">
+						  <div class="modalColumn">
+							  <label>Question 1: Do you like to play golf?</label>
+							  <div class="modalQuestion1">
+								  <input type="radio" name="question1" value="1">&nbsp;1</input>
+								  <input type="radio" name="question1" value="2">&nbsp;2</input>
+								  <input type="radio" name="question1" value="3">&nbsp;3</input>
+								  <input type="radio" name="question1" value="4">&nbsp;4</input>
+								  <input type="radio" name="question1" value="5">&nbsp;5</input>
+						  	  </div>
+						  	  
+						  	  <label>Question 2: Do you like to play golf?</label>
+							  <div class="modalQuestion2">
+								  <input type="radio" name="question2" value="1">&nbsp;1</input>
+								  <input type="radio" name="question2" value="2">&nbsp;2</input>
+								  <input type="radio" name="question2" value="3">&nbsp;3</input>
+								  <input type="radio" name="question2" value="4">&nbsp;4</input>
+								  <input type="radio" name="question2" value="5">&nbsp;5</input>
+						  	  </div>
+						  </div>
+						  
+						  <div>
+							  <label>Question 3: Do you like to play golf?</label>
+							  <div class="modalQuestion3">
+								  <input type="radio" name="question3" value="1">&nbsp;1</input>
+								  <input type="radio" name="question3" value="2">&nbsp;2</input>
+								  <input type="radio" name="question3" value="3">&nbsp;3</input>
+								  <input type="radio" name="question3" value="4">&nbsp;4</input>
+								  <input type="radio" name="question3" value="5">&nbsp;5</input>
+						  	  </div>
+						  	  
+						  	  <label>Question 4: Do you like to play golf?</label>
+							  <div class="modalQuestion4">
+								  <input type="radio" name="question4" value="1">&nbsp;1</input>
+								  <input type="radio" name="question4" value="2">&nbsp;2</input>
+								  <input type="radio" name="question4" value="3">&nbsp;3</input>
+								  <input type="radio" name="question4" value="4">&nbsp;4</input>
+								  <input type="radio" name="question4" value="5">&nbsp;5</input>
+						  	  </div>
+						  </div>
+					  </div>
+					  <div class="modal-footer">
+							<h3><input type="submit" value="Register" id="submitGuestRegisterButton"/></h3>
+					  </div>
+					</div>
+				</div>		
+			 </form>	
+					
+				<!-- Code for the Login section-->
 					<div class="loginContent" id="loginPanel">
 						<form action="php/login.php" method="post">
 						<div id="userInput">
@@ -247,8 +366,8 @@
 				</div>     
          </div>
     </div>
-
-  
+<!-- The Modal -->
+				
 	<!--Container-fluid is the div for our content in between deal scroller, login, and our footer.
    		Bulk of content will probably be in this section.-->  
    		
@@ -274,6 +393,7 @@
 			  </div>
 			  
 		 </div>
+		   
     </div> 
         
         <!-- End of the Container-fluid, also known as the content in between our 
@@ -296,7 +416,7 @@
    			</div>
     		<div id="get_started"><h4 align="center"><b>Getting Started</b></h4>
     			<ul style="list-style: none;">
-  	    			<li>Login/Register</li>
+  	    			<li><a href="#forgotPassPanel">Login/Register</a></li>
    	    			<li>Try us out as a guest</li>    	    
     	    	</ul>
     		</div>
@@ -305,7 +425,32 @@
     </footer>
 
   	<!-- Include all compiled plugins (below), or include individual files as needed --> 
-	
+	<script>// Get the modal
+			var modal = document.getElementById('registerModal');
+
+			// Get the button that opens the modal
+			var btn = document.getElementById("submitGuestRegisterButton");
+
+			// Get the <span> element that closes the modal
+			var span = document.getElementsByClassName("close")[0];
+
+			// When the user clicks the button, open the modal 
+			btn.onclick = function() {
+				modal.style.display = "block";
+			}
+
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function() {
+				modal.style.display = "none";
+			}
+
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function(event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+				}
+			}
+	</script>	
 
 
 	</div>
