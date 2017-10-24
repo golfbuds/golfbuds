@@ -36,7 +36,14 @@
     	});
    });			
 		
-		
+
+/*Script for sliding down login panel to reveal guest register*/		
+	$(document).ready(function(){
+    	$("#guestFromRegisterButton").click(function(){
+        	$("#loginPanel").slideUp();
+			$("#guestRegisterPanel").slideDown();
+    	});
+   });		
 /*SCRIPTS FOR REGISTER SECTION*/		
 		
 /*Script for sliding down register section and bring up the login page*/
@@ -44,14 +51,6 @@
     	$("#loginFromRegisterButton").click(function(){
         	$("#registerPanel").slideUp();
 			$("#loginPanel").slideDown();
-    	});
-   });
-
-/*Script for sliding down register panel to reveal guest register*/		
-	$(document).ready(function(){
-    	$("#guestFromRegisterButton").click(function(){
-        	$("#registerPanel").slideUp();
-			$("#guestRegisterPanel").slideDown();
     	});
    });
 	
@@ -63,9 +62,6 @@
 			$("#loginPanel").slideDown();
     	});
    });
-
-/*Script for Modal(popup window) when user creates guest account*/		
-
 		
 /*SCRIPTS FOR FORGOT YOUR PASSWORD SECTION*/
 		
@@ -84,8 +80,19 @@
 			$("#registerPanel").slideDown();
     	});
    });		
+</script>
+	   
+
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">	  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>	
+
+<!--Scripts for the picking a reservation date-->	  
+ <script>
+  $( function() {
+    $( "#datepicker" ).datepicker({minDate: 0});
+  } );
 </script>	
-	
 		
 		
   </head>
@@ -115,11 +122,17 @@
        
        <!-- BANNER CAROUSEL-->
        <div id="carousel1" class="carousel slide" data-ride="carousel" data-interval="8000">
-            <ol class="carousel-indicators">
+           
+		   
+		   <!-- Carousel indicators to switch between each image
+
+		   <ol class="carousel-indicators">
               <li data-target="#carousel1" data-slide-to="0" class="active"></li>
               <li data-target="#carousel1" data-slide-to="1"></li>
               <li data-target="#carousel1" data-slide-to="2"></li>
             </ol>
+
+			-->
             <div class="carousel-inner" role="listbox">
               <div class="item active"><img src="images/golflighter.jpg" alt="First slide image" class="center-block">
                 <div class="carousel-caption">
@@ -179,8 +192,8 @@
          <!-- Account Login and Registration-->
          
          <div id="registerDiv" class="col-lg-2 col-lg-offset-1">
-				<form action="php/insert_into.php" method="post">
-                	 
+				
+                <form action="php/insert_into.php" method="post">			 
                 	 <!--Code for the register section -->
                  	 <div class="registerForm" id="registerPanel">
           				<div id="userInput">
@@ -218,19 +231,67 @@
 									<input type="checkbox" />
 									<span>Send me updates</span>
 								</div>
-									<input id="guestRegisterSubmitButton" type="submit" value="Register" />
+								<button id="registerSubmitButton" type="button"/>Register</button>
 									<a id="loginFromRegisterButton" href="#" rel="login" class="linkform">You have an account already? Log in here</a>
-									<a id="guestFromRegisterButton" href="#" rel="login" class="linkform">Want to try us out before committing? Create a guest account!</a>
 								<div class="clear"></div>
 							</div>
 
 						</div>
 					</div>	
-				</form>	
 				
+			<!--Modal for the permanent user registration, does not have the researchs with the 4 questions-->
+			 		
+				<div id="registerModal" class="modal-content">
+				  <div class="modal-content"> 
+					  <div class="modal-header">
+							<span class="close">&times;</span>
+							<h3>Please answer the follow questions to the best of your ability.</h3>
+					  </div>
+					  
+					  <!-- Modal Content for the Questions about the user's interests -->
+					  
+					  <div class="modal-body">
+						  <div class="modalColumn">
+							  <label>Question 1: Do you like to play golf?</label>
+							  <div class="modalQuestion1">
+								  <input type="radio" name="question1" value="1">&nbsp;Yes</input>
+								  <input type="radio" name="question1" value="2">&nbsp;No</input>
+							  </div>
+						  	  
+						  	  <label>Question 2: Do you like to play golf?</label>
+							  <div class="modalQuestion2">
+								  <input type="radio" name="question2" value="1">&nbsp;Yes</input>
+								  <input type="radio" name="question2" value="2">&nbsp;No</input>
+						  	  </div>
+						  </div>
+						  
+						  <div>
+							  <label>Question 3: Do you like to play golf?</label>
+							  <div class="modalQuestion3">
+								  <input type="radio" name="question3" value="1">&nbsp;Yes</input>
+								  <input type="radio" name="question3" value="2">&nbsp;No</input>
+						  	  </div>
+						  	  
+						  	  <label>Question 4: Do you like to play golf?</label>
+							  <div class="modalQuestion4">
+								  <input type="radio" name="question4" value="1">&nbsp;Yes</input>
+								  <input type="radio" name="question4" value="2">&nbsp;No</input>
+						  	  </div>
+						  </div>
+					  </div>				
+
+					<!-- Modal footer contains the Register button -->	
+					  <div class="modal-footer">
+			  			<h3><input type="submit" value="Register" id="submitRegisterButton"/></h3>
+					  </div>
+					</div>
+				</div>		
+			 </form>	
+			 
+			 
 			<!--Code for guest registration-->
 			
-				 
+			<form action="php/insert_into.php" method="post">	 
 			 	 <div class="guestRegisterForm" id="guestRegisterPanel">
           				<div id="userInput">
 							<h3 id="guestRegisterH3" class="guestRegisterH3">Guest Register</h3>
@@ -251,7 +312,7 @@
 								</div>
 							</div>
 							<div id="guestRegisterBottom" class="bottom">
-								<input type="submit" value="Register" id="submitGuestRegisterButton"/>
+								<button type="button"  id="submitGuestRegisterButton"/>Register</button>
 									<a id="loginFromGuestRegisterButton" href="#" rel="login" class="linkform">You have an account already? Log in here</a>
 								<div class="clear"></div>
 							</div>
@@ -262,60 +323,85 @@
 		
 		<!-- Code for modal(popup window) after user begins creation of 
 				guest account to further ask user for their traits-->
-			
-
-			<form action="php/insert_into.php" method="post">				
-				<div id="registerModal" class="modal-content">
+										
+				<div id="guestRegisterModal" class="modal-content">
 				  <div class="modal-content"> 
 					  <div class="modal-header">
-							<span class="close">&times;</span>
-							<h3>Please answer the follow questions to the best of
-								your ability. Rating your answers from a scale of 1 to 5. (<b>5 Being you strongly agree
-								and 1 being you disaree</b>)</h3>
+							<span class="close" onclick="document.getElementById('guestRegisterModal').style.display='none'">&times;</span>
+							<h3>Please answer the follow questions to the best of your ability.</h3>
 					  </div>
+					  
+					  <!-- Modal Content for the Questions about the user's interests -->
+					  
 					  <div class="modal-body">
 						  <div class="modalColumn">
 							  <label>Question 1: Do you like to play golf?</label>
 							  <div class="modalQuestion1">
-								  <input type="radio" name="question1" value="1">&nbsp;1</input>
-								  <input type="radio" name="question1" value="2">&nbsp;2</input>
-								  <input type="radio" name="question1" value="3">&nbsp;3</input>
-								  <input type="radio" name="question1" value="4">&nbsp;4</input>
-								  <input type="radio" name="question1" value="5">&nbsp;5</input>
+								  <input type="radio" name="question1" value="1">&nbsp;Yes</input>
+								  <input type="radio" name="question1" value="2">&nbsp;No</input>
 						  	  </div>
 						  	  
 						  	  <label>Question 2: Do you like to play golf?</label>
 							  <div class="modalQuestion2">
-								  <input type="radio" name="question2" value="1">&nbsp;1</input>
-								  <input type="radio" name="question2" value="2">&nbsp;2</input>
-								  <input type="radio" name="question2" value="3">&nbsp;3</input>
-								  <input type="radio" name="question2" value="4">&nbsp;4</input>
-								  <input type="radio" name="question2" value="5">&nbsp;5</input>
+								  <input type="radio" name="question2" value="1">&nbsp;Yes</input>
+								  <input type="radio" name="question2" value="2">&nbsp;No</input>
 						  	  </div>
 						  </div>
 						  
 						  <div>
 							  <label>Question 3: Do you like to play golf?</label>
 							  <div class="modalQuestion3">
-								  <input type="radio" name="question3" value="1">&nbsp;1</input>
-								  <input type="radio" name="question3" value="2">&nbsp;2</input>
-								  <input type="radio" name="question3" value="3">&nbsp;3</input>
-								  <input type="radio" name="question3" value="4">&nbsp;4</input>
-								  <input type="radio" name="question3" value="5">&nbsp;5</input>
+								  <input type="radio" name="question3" value="1">&nbsp;Yes</input>
+								  <input type="radio" name="question3" value="2">&nbsp;No</input>
 						  	  </div>
 						  	  
 						  	  <label>Question 4: Do you like to play golf?</label>
 							  <div class="modalQuestion4">
-								  <input type="radio" name="question4" value="1">&nbsp;1</input>
-								  <input type="radio" name="question4" value="2">&nbsp;2</input>
-								  <input type="radio" name="question4" value="3">&nbsp;3</input>
-								  <input type="radio" name="question4" value="4">&nbsp;4</input>
-								  <input type="radio" name="question4" value="5">&nbsp;5</input>
+								  <input type="radio" name="question4" value="1">&nbsp;Yes</input>
+								  <input type="radio" name="question4" value="2">&nbsp;No</input>
 						  	  </div>
 						  </div>
 					  </div>
+
+					<!-- Modal Content for the Reservation location, date and time -->
+					
+                      <div class="row modalReservation" style="padding-top: 20px;">
+                        <div class="col-lg-4">
+
+							<h5><b>Courses:</b></h5>
+								<select id="courseList">
+									<option value="ho1">Haggin Oaks 1</option>
+									<option value="ho2">Haggin Oaks 2</option>
+									<option value="ho3">Haggin Oaks 3</option>
+									<option value="ho4">Haggin Oaks 4</option>
+									<option value="ho5">Haggin Oaks 5</option>
+								</select>
+						</div>
+						
+						  
+						<!-- Reservation Date -->  
+                        <div class="col-lg-4 col-lg-offset-1">
+						
+							<h5><b>Date:</b></h5>
+							<input id="datepicker" name="reservationDate">
+
+						</div>
+						
+						<!-- Reservaton Time -->  
+                        <div class="col-lg-2 col-lg-offset-1">
+						  
+							<h5><b>Time:</b></h5>
+							<input type="time" id="appt-time" name="reservationTime">
+							<p style="font-size: 12px;" align="center"><i>Format example: 10:00 AM</i></p>
+						  
+						</div>
+						  <br></br>
+                      </div>
+					
+
+					<!-- Modal footer contains the Register button -->	
 					  <div class="modal-footer">
-							<h3><input type="submit" value="Register" id="submitGuestRegisterButton"/></h3>
+			  			<h3><input type="submit" value="Register" id="submitGuestRegisterButton"/></h3>
 					  </div>
 					</div>
 				</div>		
@@ -339,6 +425,7 @@
 								<div class="remember"><input type="checkbox" /><span>Keep me logged in</span></div>
 								<input type="submit" value="Login" formmethod="post"></input>
 								<a id="registerButton" href="#" rel="register" class="linkform">You don't have an account yet? Register here</a>
+								<a id="guestFromRegisterButton" href="#" rel="login" class="linkform">Want to try us out before committing? Create a guest account!</a>
 								<div class="clear"></div>
 							</div>
 						</div>	
@@ -425,34 +512,50 @@
     </footer>
 
   	<!-- Include all compiled plugins (below), or include individual files as needed --> 
-	<script>// Get the modal
-			var modal = document.getElementById('registerModal');
 
+<!--Script for guest register modal. Has 4 questions and research options.-->
+	<script>// Get the modal
+			var modal = document.getElementById("guestRegisterModal");
+			var modal1 = document.getElementById("registerModal");
 			// Get the button that opens the modal
 			var btn = document.getElementById("submitGuestRegisterButton");
-
+			var btn1 = document.getElementById("registerSubmitButton");
 			// Get the <span> element that closes the modal
 			var span = document.getElementsByClassName("close")[0];
-
+			var span1 = document.getElementsByClassName("close")[0];
 			// When the user clicks the button, open the modal 
 			btn.onclick = function() {
 				modal.style.display = "block";
 			}
-
+			btn1.onclick = function() {
+				modal1.style.display = "block";
+			}
 			// When the user clicks on <span> (x), close the modal
+			//span for the guest register also has code to close the modal with a span
+			//on the span tag in the guestRegisterModal div
 			span.onclick = function() {
 				modal.style.display = "none";
 			}
-
+			span1.onclick = function() {
+				modal1.style.display = "none";
+			}
 			// When the user clicks anywhere outside of the modal, close it
 			window.onclick = function(event) {
 				if (event.target == modal) {
 					modal.style.display = "none";
 				}
+				if (event.target == modal1) {
+					modal1.style.display = "none";
+				}
 			}
-	</script>	
 
+	</script>
+	
 
+<!--Modal for the permanent registration. Does not have reservation.-->
+	
+
+	
 	</div>
   </body>
 </html>
