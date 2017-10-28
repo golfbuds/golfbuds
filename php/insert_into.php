@@ -1,5 +1,6 @@
 <?php
 include "db_connect.php";
+include "secstuff.php";
 
 $first_name = $last_name = $user_name = $user_email = $user_pass = $user_pass_confirm = "";
 $fail = false;
@@ -29,11 +30,18 @@ if(strcmp($first_name, "") === 0 || strcmp($last_name, "") === 0 || strcmp($user
 	$fail = true; 
 }
 //check if string contains any spaces in the actually trimmed string
+//Exclude passwords
 if(strpos($first_name, " ") === true || strpos($last_name, " ") === true || strpos($user_name, " ") === true 
-		|| strpos($user_email, " ") === true || strpos($user_pass, " ") === true || strcmp($user_pass_confirm, "") === 0) { 
+		|| strpos($user_email, " ") === true ) { 
 
 	$fail = true; 
 }
+
+//Only letters in names, username can contain numbers
+if(preg_match("/^[A-Za-z]+$/", $first_name) === 0) { $fail = true; }
+if(preg_match("/^[A-Za-z]+$/", $last_name) === 0) { $fail = true; }
+if(preg_match("/^[A-Za-z0-9]+$/", $user_name) === 0) { $fail = true; }
+
 //Validate email format
 if(!filter_var($user_email, FILTER_VALIDATE_EMAIL)) { $fail = true; }
 
@@ -42,6 +50,10 @@ if(strcmp($user_pass, $user_pass_confirm) !== 0) { $fail = true; }
 
 //If no errors then try sql else echo error
 if($fail === false){
+	//Encrypt
+	$iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length("$user_pass"));
+	$user_pass = openssl_encrypt($user_pass, "aes-256-cbc", $key, $options=0, $iv);
+
     $sql = "INSERT INTO user(first_name, last_name, user_name, user_email, password)
         VALUES('$first_name', '$last_name', '$user_name', '$user_email', '$user_pass')";
     if(!mysqli_query($conn, $sql)) echo "<br>" . mysqli_error($conn); 

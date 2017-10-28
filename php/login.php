@@ -1,5 +1,6 @@
 <?php
 	include "db_connect.php";
+	include "secstuff.php";
 	
 	$username = $password = "";
 	$fail = false;
@@ -16,12 +17,18 @@
     	$fail = true;
 	}
 	//check if string contains any spaces in the actually trimmed string
-	if(strpos($username, " ") === true || strpos($password, " ") === true) {
+	//exclude password
+	if(strpos($username, " ") === true)  {
     	$fail = true;
 	}
 
+	//Only letters and number in username
+	if(preg_match("/^[A-Za-z0-9]+$/", $username) === 0) { $fail = true; }
+
 
 	if($fail === false)	{
+		$iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length("$password"));
+		$password = openssl_encrypt($password, "aes-256-cbc", $key, $options=0, $iv);
 		$sql = "select * from user where user_name='$username' and password='$password'";
 	
 		if(mysqli_num_rows(mysqli_query($conn, $sql)) == 1) {
