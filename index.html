@@ -3,9 +3,15 @@
   <head>
     <meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1" >
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+	<link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
     <title>GolfBuds</title>
     <!-- Bootstrap -->
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">	  
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>	 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="js/bootstrap.js"></script>
 	<link href="css/bootstrap.css" rel="stylesheet">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -14,8 +20,7 @@
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="js/bootstrap.js"></script>
+
 	
 	<script>
 /*SCRIPTS FOR LOGIN SECTION*/
@@ -81,11 +86,9 @@
     	});
    });		
 </script>
-	   
+   
 
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">	  
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>	
+
 
 <!--Scripts for the picking a reservation date-->	  
  <script>
@@ -101,8 +104,8 @@
   	<div class="navbarTopFixed">
   		<nav class="navbar navbar-default navbar-fixed-top">
          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topFixedNavbar1" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-            <a class="navbar-brand" href="index.html">GolfBuds</a></div>
+           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topFixedNavbar1" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            <a href="index.html" class="navbar-brand"><img src="images/GB_Icon1_noShadow.png" id="gbLogo"></a></div>
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="topFixedNavbar1">
             <form class="navbar-form navbar-right" role="search">
@@ -131,8 +134,8 @@
               <li data-target="#carousel1" data-slide-to="1"></li>
               <li data-target="#carousel1" data-slide-to="2"></li>
             </ol>
-
 			-->
+		
             <div class="carousel-inner" role="listbox">
               <div class="item active"><img src="images/golflighter.jpg" alt="First slide image" class="center-block">
                 <div class="carousel-caption">
@@ -186,7 +189,8 @@
                </div>
              </div>
 				 <a class="left carousel-control" role="button" data-slide="prev" onClick="$('#carousel2').carousel('prev')" style="background:none !important"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><span class="sr-only">Previous</span></a>
-				 <a class="right carousel-control" role="button" data-slide="next" onClick="$('#carousel2').carousel('next')" style="background:none !important"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><span class="sr-only">Next</span></a></div>
+				 <a class="right carousel-control" role="button" data-slide="next" onClick="$('#carousel2').carousel('next')" style="background:none !important"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><span class="sr-only">Next</span></a>
+			 </div>
          </div>       
          
          <!-- Account Login and Registration-->
@@ -223,7 +227,7 @@
 								</div>
 								<div>
 									<label>Re-enter Password:</label>
-									<input type="password" name="passWConfirm"/>
+									<input type="password" name="passW"/>
 								</div>
 							</div>
 							<div id="registerBottom" class="bottom">
@@ -332,8 +336,30 @@
 					  </div>
 					  
 					  <!-- Modal Content for the Questions about the user's interests -->
+					 <div class="modal-body"> 
+						 <h5 style="font-size: 17px;"><b>Please enter your Age and Handicap</b></h5>
+						  <div class="modalAgeHandicap">
+							  <div class="modalAge col-lg-6">
+									<select id="ageList">
+										<option value="ageDefault" disabled selected>Age</option>
+										<option value="age18_24">18-24</option>
+										<option value="age25_31">25-31</option>
+										<option value="age32_38">32-38</option>
+										<option value="age39_45">39-45</option>
+										<option value="age46_52">46-52</option>
+										<option value="age53_59">53-59</option>
+										<option value="age60plus">60+</option>
+									</select>
+							  </div>
+
+							  <div class="modalHandicap col-lg-6">
+									<input type="number" step="0.1" min="-1.0" max="36.4" placeholder=" e.g. 15.5">												
+							  </div>
+
+						  </div>
 					  
-					  <div class="modal-body">
+					</div>  
+					  <div class="modal-body">					  
 						  <div class="modalColumn">
 							  <label>Question 1: Do you like to play golf?</label>
 							  <div class="modalQuestion1">
@@ -380,7 +406,7 @@
 						
 						  
 						<!-- Reservation Date -->  
-                        <div class="col-lg-4 col-lg-offset-1">
+                        <div class="col-md-11 col-lg-3 col-lg-offset-0">
 						
 							<h5><b>Date:</b></h5>
 							<input id="datepicker" name="reservationDate">
@@ -388,16 +414,46 @@
 						</div>
 						
 						<!-- Reservaton Time -->  
-                        <div class="col-lg-2 col-lg-offset-1">
+                        <div class="col-lg-3 col-lg-offset-2">
 						  
 							<h5><b>Time:</b></h5>
-							<input type="time" id="appt-time" name="reservationTime">
-							<p style="font-size: 12px;" align="center"><i>Format example: 10:00 AM</i></p>
-						  
+								<select id="timeHourList">
+									<option value="timeHourDefault" disabled selected>Hour</option>
+									<option value="timeHour1">1</option>
+									<option value="timeHour2">2</option>
+									<option value="timeHour3">3</option>
+									<option value="timeHour4">4</option>
+									<option value="timeHour5">5</option>
+									<option value="timeHour6">6</option>
+									<option value="timeHour7">7</option>
+									<option value="timeHour8">8</option>
+									<option value="timeHour9">9</option>
+									<option value="timeHour10">10</option>
+									<option value="timeHour10">11</option>
+									<option value="timeHour12">12</option>
+								</select>
+							
+								<select id="timeMinuteList">
+									<option value="timeMinuteDefault" disabled selected>Minute</option>
+									<option value="timeMinute10">10</option>
+									<option value="timeMinute20">20</option>
+									<option value="timeMinute30">30</option>
+									<option value="timeMinute40">40</option>
+									<option value="timeMinute50">50</option>
+								</select>
+							
+								<select id="timePeriodList">
+									<option value="timePeriodDefault" disabled selected>AM/PM</option>
+									<option value="timePeriodAM">AM</option>
+									<option value="timePeriodPM">PM</option>
+								</select>
+					  
 						</div>
 						  <br></br>
                       </div>
 					
+
+
 
 					<!-- Modal footer contains the Register button -->	
 					  <div class="modal-footer">
@@ -458,30 +514,124 @@
 	<!--Container-fluid is the div for our content in between deal scroller, login, and our footer.
    		Bulk of content will probably be in this section.-->  
    		
-    <div class="container-fluid">       
-          <div id="leftContent" class="col-lg-6 col-md-6">
-            <h3 ><i>"The object of golf is not just to win. It is to play like a gentleman and win." - Phil Mickelson</i></h3>
-          </div>
-          	<div id="rightContent" class="col-lg-4"> <img src="images/Phil-Mickelson-Gregory-Silveira-money-laundering-case.jpg" height="200" class="img-circle" id="images" align ="right"> </div>
-          <!-- /.navbar-collapse -->
-        
-			<div class="row"><a id="review" > </a>
-			  <div class="col-lg-6"><img src="images/steph-curry-golf-web-rd-1.jpg" alt="" width="354" height="200" class="img-circle"/></div>
-				  <div class="col-lg-6 col-md-7">
-					<h3><i>"I'm happy with it. Obviously as a competitor, you feel like you can always play better. So hopefully I can do that tomorrow." - Stephen Curry</i></h3>
-				  </div>        
+    <div class="container-fluid">    
+	<!--List of the content images-->	
+      <ul class="contentColumns" data-columns="2">
+		<li class="contentImagesList">
+			<div id="contentImages" class="contentImages"><img src="images/contentGolfImg.jpg">
+				<div class="contentTextHover">
+					<div class="contentText">
+						<h3>Ready to Golf?</h3>
+						<p>Nulla tincidunt accumsan nibh. Fusce vitae scelerisque dui. Nulla ac sapien urna.</p>				
+					</div>
+				</div>
 			</div>
-        
+		</li>
+		<li class="contentImagesList">
+			<div id="contentImages" class="contentImages"><img src="images/contentGolfImg2.jpg">
+				<div class="contentTextHover">
+					<div class="contentText">
+						<h3>Ready to Golf?</h3>
+						<p>Phasellus vitae posuere arcu, sed semper velit. Curabitur scelerisque ex nec leo pharetra aliquet. Mauris pretium blandit odio, in posuere urna auctor in.</p>					
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class="contentImagesList">
+			<div id="contentImages" class="contentImages"><img src="images/contentGolfImg3.jpg">
+				<div class="contentTextHover">
+					<div class="contentText">
+						<h3>Ready to Golf?</h3>
+						<p>Curabitur in nulla eros. Suspendisse ultrices mollis magna a rutrum.</p>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class="contentImagesList">
+			<div id="contentImages" class="contentImages"><video loop autoplay src="video/golfCourseVid2.mp4" width="100%"></video>
+				<div class="contentTextHover">
+					<div class="contentText">
+						<h3>Ready to Golf?</h3>
+						<p>Fusce mattis, ligula cursus lacinia luctus, mi sapien eleifend elit.</p>
+					</div>
+				</div>
+			</div>
+		</li>   
+		<li class="contentImagesList">
+			<div id="contentImages" class="contentImages"><img src="images/contentGolfImg5.jpg">
+				<div class="contentTextHover">
+					<div class="contentText">
+						<h3>Ready to Golf?</h3>
+						<p>Aenean vitae dui dapibus, dictum odio in, cursus est.</p>				
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class="contentImagesList">
+			<div id="contentImages" class="contentImages"><img src="images/contentGolfImg6.jpg">
+				<div class="contentTextHover">
+					<div class="contentText">
+						<h3>Ready to Golf?</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>				
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class="contentImagesList">
+			<div id="contentImages" class="contentImages"><img src="images/contentGolfImg4.jpg">
+				<div class="contentTextHover">
+					<div class="contentText">
+						<h3>Ready to Golf?</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>					
+					</div>
+				</div>
+			</div>
+		</li>   
+		<li class="contentImagesList">
+			<div id="contentImages" class="contentImages"><video loop autoplay src="video/golfCourseVid1.mp4" width="100%"></video>
+				<div class="contentTextHover">
+					<div class="contentText">
+						<h3>Ready to Golf?</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>					
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>	
+		
+		
+		<!--Review Portrait Thumbnail photo size 180px x 180px -->
+		<div class="contentReviews">
 		  <div class="row">
-			 <div class="col-lg-6 col-md-7">
-				<h3><i>"I'm happy with it. Obviously as a competitor, you feel like you can always play better. So hopefully I can do that tomorrow." - Stephen Curry</i></h3>
-			  </div>
-			  <div class="col-lg-6" align="right"><img src="images/steph-curry-golf-web-rd-1.jpg" alt="" width="354" height="200" class="img-circle"/>
-			  </div>
+			  <div class="col-md-4">
+			    <div class="thumbnail"><img src="images/reviewThumbnail1.jpg" alt="Thumbnail Image 1" height="320px" width="450px">
+			      <div class="caption">
+			        <h3>Jane Doe</h3>
+			        <p><i>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam vel quam elementum pulvinar etiam non."</i></p>
+		          </div>
+		        </div>
+		    </div>
+			<div class="col-md-4">
+			    <div class="thumbnail"><img src="images/reviewThumbnail2.jpg" alt="Thumbnail Image 1" height="320px" width="450px">
+			      <div class="caption">
+			        <h3>John Smith</h3>
+			        <p><i>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Egestas maecenas pharetra convallis posuere morbi leo."</i></p>
+				  </div>
+		        </div>
+		    </div>
+			<div class="col-md-4">
+			    <div class="thumbnail"><img src="images/reviewThumbnail3.jpg" alt="Thumbnail Image 1" height="320px" width="450px">
+			      <div class="caption">
+			        <h3>Phil Mickelson</h3>
+			        <p><i>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempor id eu nisl nunc mi ipsum faucibus vitae. In aliquam sem fringilla ut morbi tincidunt augue interdum."</i></p>
+		          </div>
+	          </div>
+		    </div>  
 			  
-		 </div>
-		   
-    </div> 
+		  </div>
+        </div>	
+		
+</div> 
         
         <!-- End of the Container-fluid, also known as the content in between our 
         	deal scroll, login and footer-->
@@ -489,22 +639,23 @@
     
     <!--This is the footer section -->
     <footer id="footer" class="col-lg-12">
-    	    <div id="about_us"> <h4 align="center"><b>About Us</b></h4>
+    	    <div id="about_us"> <h4 align="left"><b>About Us</b></h4>
 				<ul style="list-style: none;">
   	    			<li>Who are we?</li>
    	    			<li>What do we offer?</li>    	    
     	  		</ul>
     	    </div>
-    		<div id="contacts"><h4 align="center"><b>Contacts</b></h4>
+    		<div id="contacts"><h4 align="left"><b>Contacts</b></h4>
     			<ul style="list-style: none;">
   	    			<li>Call us 1-800-Golf-Bud</li>
    	    			<li>Email Us</li>    	    
    				</ul>
    			</div>
-    		<div id="get_started"><h4 align="center"><b>Getting Started</b></h4>
+    		<div id="get_started"><h4 align="left"><b>Getting Started</b></h4>
     			<ul style="list-style: none;">
-  	    			<li><a href="#forgotPassPanel">Login/Register</a></li>
-   	    			<li>Try us out as a guest</li>    	    
+  	    			<li><a href="#wrapper">Login/Register</a></li>
+   	    			<li>Try us out as a guest</li>
+					<li>Want to sign up as a course?</li>
     	    	</ul>
     		</div>
     		<div id="copyright">Copyright © 2017 Golfbuds. All rights reserved. <a>Privacy Policy</a> | <a>Terms of Use</a> | <a>Legal</a>	 | <a>Site Map</a>

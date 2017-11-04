@@ -29,17 +29,74 @@ navbarTopFixed{
 Personal css formats for div
 Beginning
 */
-leftContent{
-
+*{
+	margin: 0px;
+	padding: 0px;
 }
 
-rightContent{
-	background-color: #FF9202;
-	padding: 10px 10px 10px 10px;	
+ul.contentColumns li{
+	display: block;
+	position: relative;
 }
 
 images{
 	padding: 10px 10px 10px 10px;
+}
+
+img{
+	max-height: 100%;
+	max-width: 100%;
+	padding-bottom: 6px;
+}
+
+ .contentImagesList{
+	box-sizing: content-box;
+	margin-bottom: 6px;
+	list-style-type: none;
+}
+
+.contentImages .contentTextHover{
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.6);
+	color: #fff;
+	padding: 15px;
+	-moz-transition: all 0.4s ease-in-out 0s;
+	-webkit-transition: all 0.4s ease-in-out 0s;
+	-ms-transition: all 0.4s ease-in-out 0s;
+	transition: all 0.4s ease-in-out 0s;
+	
+}
+
+.contentImages:hover .contentTextHover,
+.contentImages:active .contentTextHover{
+	opacity: 1;
+	height: 99.3%;
+}
+
+.contentImages .contentText{
+	text-align: center;
+	font-size: 18px;
+	display: inline-block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-moz-transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.contentColumns{
+	width: 100%;
+	column-count: 2;
+	list-style-type: none;
 }
 
 .carousel {
@@ -57,7 +114,6 @@ images{
 	padding-right: 10px;
 	margin-right: auto;
 	margin-left: auto;
-	
 }
 /*banner class style for font*/
 .banner {
@@ -75,6 +131,7 @@ images{
 /*Footer properties*/
 footer {
 	background-color: #F1F1F1;
+	width: auto;
 }
 
 #about_us{
@@ -357,7 +414,7 @@ creation procress by asking them for their traits*/
 }
 
 .modalReservation{
-	border-top: 1px solid #e5e5e5;
+	padding-bottom: 25px;
 }
 
 .modalQuestion1, .modalQuestion2, .modalQuestion3, .modalQuestion4 {
@@ -6342,10 +6399,12 @@ button.close {
 }
 .modal-body {
   position: relative;
-  padding: 15px;
+  padding: 15px 15px 25px 15px;
+  border-bottom: 1px solid #e5e5e5;
+  
 }
 .modal-footer {
-  padding: 15px;
+  padding: 10px;
   text-align: right;
   border-top: 1px solid #e5e5e5;
 }
@@ -7152,3 +7211,19 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+.modalAgeHandicap {
+	padding-bottom: 25px;
+}
+
+.gbLogo {
+	width: 450px;
+	height: 150px;
+}
+
+#gbLogo {
+	position: absolute;
+	top:5px;
+	left: 5px;
+	overflow: hidden;
+}
