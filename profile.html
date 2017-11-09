@@ -1,5 +1,8 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -52,12 +55,13 @@
             <!--Icon Sizes for each item on the drop down menu should be abou 128 x128 pixels -->
             <!--Icon finding website: https://www.iconfinder.com/ -->
             <div id="profileDropDownMenu" class="btn-group">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Welcome, {firstName} {lastName}<span class="caret"></span></button>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<?php echo "Welcome, " . $_SESSION["fname"] . " " . $_SESSION["lname"]; ?><span class="caret"></span></button>
               <ul class="dropdown-menu">
                 <li role="presentation"><a href="#"><img src="images/preferenceIcon.png" width="8%">&nbsp;Preferences</a></li>
                 <li role="presentation"><a href="#"><img src="images/messageIcon.png" width="8%">&nbsp;Contact Support</a></li>
                 <li role="presentation" class="divider"></li>
-                <li role="presentation"><a href="#"><img src="images/logoutIcon.png" width="10%">&nbsp;Logout</a></li>
+                <li role="presentation"><a href="php/logout.php"><img src="images/logoutIcon.png" width="10%">&nbsp;Logout</a></li>
               </ul>
             </div>           
           </div>
@@ -74,7 +78,7 @@
 				  		<img src="av.png" style="width: 20%; padding-left: 20px; ">
 				  </div>
 				  <div class="col-md-6">
-				  		<h3>Name</h3>
+				  		<h3> <?php echo $_SESSION["fname"] . " " . $_SESSION["lname"];  ?> </h3>
 						<p>misc</p>
 						<p>misc</p>
 						<p>misc</p>
@@ -146,4 +150,11 @@
 
 	</div>
 </body>
+
+<script type="text/javascript">
+	alert("<?php echo $_SESSION["report"] ?>");
+</script>
 </html>
+
+
+
