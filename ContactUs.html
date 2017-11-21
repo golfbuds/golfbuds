@@ -30,16 +30,10 @@
             <a href="index.html" class="navbar-brand"><img src="images/GB_Icon1_noShadow.png" id="gbLogo"></a></div>
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="topFixedNavbar1">
-            <form class="navbar-form navbar-right" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
-              </div>
-              <button type="submit" class="btn btn-default">Submit</button>
-            </form>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#review">Reviews</a></li>
-              <li><a href="#">Help</a></li>
-              <li><a href="#">Sign in</a></li>
+              <li><a href="ContactUs.html">Contact Us</a></li>
+              <li><a href="aboutUs.html">About Us</a></li>
+              <li><a href="index.html" style="margin-right: 10px;">Sign in</a></li>
             </ul>
           </div>
          </nav>
@@ -65,15 +59,15 @@
 					  	<form id="contactForm" action="#" method="POST">
 							  <div class="form-group">
 								  <label class="form-label" for="name"></label>
-								  <textarea rows="1" cols="50" name="name" class="formControl" id="name" placeholder="Your Name" tabindex="1" required></textarea> 
+								  <textarea rows="1" cols="50" name="name" class="formControl" id="name" placeholder="Your Name" tabindex="1" style="resize: none;" required></textarea> 
 							  </div>                            
 							  <div class="form-group">
 								  <label class="form-label" for="email"></label>
-								  <textarea rows="1" cols="50" name="email" class="formControl" id="email" placeholder="Your Email" tabindex="2" required></textarea> 
+								  <textarea rows="1" cols="50" name="email" class="formControl" id="email" placeholder="Your Email" tabindex="2" style="resize: none;" required></textarea> 
 							  </div>                            
 							  <div class="form-group">
 								  <label class="form-label" for="subject"></label>
-								  <textarea rows="1" cols="50" name="subject" class="formControl" id="subject" placeholder="Subject" tabindex="3" required></textarea>  
+								  <textarea rows="1" cols="50" name="subject" class="formControl" id="subject" placeholder="Subject" tabindex="3" style="resize: none;" required></textarea>  
 							  </div>                            
 							  <div class="form-group">
 								  <label class="form-label" for="message"></label>
@@ -89,9 +83,21 @@
 
 			<section class="card">
 				<h3 class="titleH3Center">Follow us</h1>
-				
-
-			</section>
+			<div class="row" style="text-align: center;">
+				  <div class="col-lg-3">
+					  <a href="#"><img src="images/facebookIcon.png" style="margin-bottom: 20px;"></a>
+				  </div>
+				  <div class="col-lg-3">
+					  <a href="#"><img src="images/instagramIcon.png" style="margin-bottom: 20px;"></a>
+				  </div>
+				  <div class="col-lg-3">
+					  <a href="#"><img src="images/twitterIcon.png" style="margin-bottom: 20px;"></a>
+				  </div>
+				  <div class="col-lg-3">
+					  <a href="#"><img src="images/youtubeIcon.png" style="margin-bottom: 20px;"></a>
+				  </div>
+		    </div>
+</section>
 			  
 		  </div>
 		</div>
@@ -101,21 +107,20 @@
     <footer class="col-lg-12">
     	    <div id="about_us"> <h4 align="left"><b>About Us</b></h4>
 				<ul style="list-style: none;">
-  	    			<li>Who are we?</li>
-   	    			<li>What do we offer?</li>    	    
+  	    			<a href="aboutUs.html"><li>Who are we?</li></a>
     	  		</ul>
     	    </div>
     		<div id="contacts"><h4 align="left"><b>Contacts</b></h4>
     			<ul style="list-style: none;">
   	    			<li>Call us 1-800-Golf-Bud</li>
-   	    			<li>Email Us</li>    	    
+   	    			<a href="ContactUs.html"><li>Get in touch with us</li></a>    	    
    				</ul>
    			</div>
     		<div id="get_started"><h4 align="left"><b>Getting Started</b></h4>
     			<ul style="list-style: none;">
-  	    			<li><a href="#wrapper">Login/Register</a></li>
-   	    			<li>Try us out as a guest</li>
-					<li>Want to sign up as a course?</li>
+  	    			<a href="index.html"><li>Login/Register</li></a>
+   	    			<a href="index.html"><li>Try us out as a guest</li></a>
+					<a href="ContactUs.html"><li>Want to sign up as a course?</li></a>
     	    	</ul>
     		</div>
     		<div id="copyright">Copyright © 2017 Golfbuds. All rights reserved. <a>Privacy Policy</a> | <a>Terms of Use</a> | <a>Legal</a>	| <a>Site Map</a>
