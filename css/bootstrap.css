@@ -8,6 +8,7 @@ html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
+	height: 100%;
 }
 body {
   margin: 0;
@@ -136,6 +137,9 @@ footer {
 	width: auto;
 	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, "sans-serif";
 	color: white;
+	position: absolute;
+	bottom:0px;
+	
 }
 
 #about_us{
@@ -451,21 +455,80 @@ creation procress by asking them for their traits*/
 /*End of Profile page CSS section*/
 
 
-/*Beginning of About Us Page*/
+/*Beginning of About Us Page
+Parts of CSS for About Us page like the cards, H3TitleCenter and paragraph center
+is near the bottom of the css page on lines 7265-7297*/
 .card {
 		background-color: white;
-		border-radius: 6px;
-		
+		border-radius: 6px;	
+		margin-bottom: 15px;
 }
 
 
 
 #wrapper {
 	background-color: #EEF3E2;
+	width: auto;
+	height: auto;
+	overflow-x: hidden;
+}
+/*End of About Us Page*/
+
+
+/*Beginning of Contact Us Page*/
+
+.contactSubjects {
+	text-align: center;
 }
 
-/*
+.form-label {
+	font-size: 12px;
+	color: #5e9bfc;
+	margin: 0;
+	display: block;
+	opacity: 1;
+	-webkit-transition: .333s ease top, .333s ease opacity;
+	transition: .333s ease top, .333s ease opacity;
+	
+}
 
+.formControl {
+	border-radius: 0;
+	border-color: #ccc;
+   	border-width: 0 0 2px 0;
+   	border-style: none none solid none;
+   	box-shadow: none;
+	padding: 20px;
+	
+}
+.formControl:focus {
+	box-shadow: none;
+	border-color: #5e9bfc;
+	
+}
+
+.btn-start-order {
+	background: 0 0 #ffffff;
+    border: 1px solid #2f323a;
+    border-radius: 3px;
+    color: #2f323a;
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    line-height: inherit;
+    margin: 30px 0;
+    padding: 10px 50px;
+    text-transform: uppercase;
+    transition: all 0.25s ease 0s;
+}
+.btn-start-order:hover,.btn-start-order:active, .btn-start-order:focus {
+	border-color: #5e9bfc;
+	color: #5e9bfc;
+}
+
+
+/*End of Contact Us Page*/
+
+/*
 Personal css formats for div
 End
 */
@@ -3096,7 +3159,8 @@ input[type="search"] {
 }
 .form-group {
   margin-bottom: 15px;
-}
+  text-align: center;
+ }
 .radio,
 .checkbox {
   position: relative;
@@ -7251,6 +7315,7 @@ button.close {
 	font-size: 36px;
 	line-height: 1.25;
 	max-width: 100%;
+	padding-top: 20px;
 }
 
 .col-center {
@@ -7265,10 +7330,19 @@ button.close {
 
 .paragraphCenter {
 	text-align: center;
-	
+	margin-top: 10px;
 }
 
 #map {
 	height: 400px;
 	width: 100%;
 }
+
+.cardContainer {
+	position: relative;
+	margin: 20px;
+	font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif';
+	
+}
+
+

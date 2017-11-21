@@ -49,17 +49,20 @@
 		<div class="row">
 		  <div class="col-lg-12 col-center">
 		  <section class="card">
+			  <div class="cardContainer">
 					<h3 class="titleH3Center">- Our Mission -</h3>
 					<p class="paragraphCenter"> To send you to a golf course with people you enjoy.</p>
 					<h3 class="titleH3Center">About Us</h3>
 					<p class="paragraphCenter">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam justo mi, pulvinar a arcu eget, lobortis tempus lectus. Nam volutpat nibh eu ligula vehicula tempus. Ut fringilla ut lorem id commodo. Mauris fermentum hendrerit iaculis. Curabitur iaculis leo quis nisi pharetra aliquet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eu dictum lacus. Nam non lorem nec enim vehicula porta. Praesent ac mattis ipsum.
 
 					Vestibulum semper lacinia lorem scelerisque semper. Sed sem metus, venenatis lacinia euismod id, ultricies nec erat. Nunc eget tincidunt dui. Curabitur vestibulum ante ac lobortis venenatis. Aenean vel luctus enim. Proin eget pharetra mi. Curabitur bibendum felis at nulla mollis vehicula. Nullam non luctus nisi. Duis egestas vehicula molestie. Proin rhoncus cursus aliquam. Duis vel feugiat orci, commodo aliquam enim. Pellentesque sed tellus vel elit ultrices iaculis. Integer sollicitudin ornare elit sed cursus. Suspendisse blandit lobortis sapien quis vulputate. Integer molestie pretium urna nec condimentum.</p>
-				</section>
+			  </div>
+		</section>
 				
-				<section class="card">
+		<section class="card">
+			<div class="cardContainer">
 					<h3 class="titleH3Center">- The Crew -</h3>
-				  <div class="row">
+					  <div class="row">
 						<div class="portrait col-lg-6">
 							  <div class="thumbnailTheCrew"><img class="img-circle" src="images/reviewThumbnail1.jpg" alt="Thumbnail Image 1" width="250px">
 								<div class="caption">
@@ -96,25 +99,55 @@
 						  </div>
 					  </div>					
 				    </div>
-		             </section>
+			</div>
+		</section>
 				
-				<section class="card">
+		<section class="card">
+			<div class="cardContainer">
 				  <h3 class="titleH3Center">- Our Locations -</h3>
-					<p class="paragraphCenter"> Here is a list of Golf courses that are utilizing our services:</p>
-
 				  <div id="map"></div>
-				  <script>
-					  var map;
-					  function initMap() {
-						map = new google.maps.Map(document.getElementById('map'), {
-						  center: {lat: 38.6326874, lng: -121.40285979999999},
-						  zoom: 13
-						});
-					  }
-					</script>
-					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBe5x0GPwJ46Wj_moJpTZnF3AVNJpjzJWo&callback=initMap"
-					async defer></script>
-				</section>
+					  <script>
+
+						  function initMap() {
+						  var map;
+						  var HagginOakLatlng = new google.maps.LatLng(38.6326874,-121.40285979999999);
+							map = new google.maps.Map(document.getElementById('map'), {
+							  center: {lat: 38.6326874, lng: -121.40285979999999},
+							  zoom: 13
+							});
+							  
+							 var marker = new google.maps.Marker({
+							  position: HagginOakLatlng,
+							  map: map,
+    						  title:"Haggin Oaks"			 
+						  })
+						  
+						  marker.setMap(map);  
+						  }
+						 
+						</script>
+			  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBe5x0GPwJ46Wj_moJpTZnF3AVNJpjzJWo&callback=initMap"
+						async defer></script>
+			  <p class="paragraphCenter"> Here is a list of Golf courses that are utilizing our services:</p>
+              <div class="row">
+                <div class="col-lg-4">
+						<p style="font-size: 18px;">Haggin Oaks</p>
+						<p>3645 Fulton Avenue</p>
+						<p>Sacramento, CA 95821</p>	 
+				</div>
+                <div class="col-lg-4">
+						<p style="font-size: 18px;">Haggin Oaks</p>
+						<p>3645 Fulton Avenue</p>
+						<p>Sacramento, CA 95821</p>				
+				</div>
+                <div class="col-lg-4">
+						<p style="font-size: 18px;">Haggin Oaks</p>
+						<p>3645 Fulton Avenue</p>
+						<p>Sacramento, CA 95821</p>  
+				</div>
+              </div>
+            </div>
+		</section>
 				
 				
 	  </div>
