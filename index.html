@@ -191,8 +191,8 @@
          
          <div id="registerDiv" class="col-lg-2 col-lg-offset-1">
 				
-                <form action="php/insert_into.php" method="post">			 
                 	 <!--Code for the register section -->
+                <form id="registerForm">			 
                  	 <div class="registerForm" id="registerPanel">
           				<div id="userInput">
 							<h3 id="registerH3" class="registerH3">Register</h3>
@@ -207,7 +207,7 @@
 								</div>
 								<div>
 									<label>Re-enter Password:</label>
-									<input type="password" name="passW"/>
+									<input type="password" name="passWConfirm"/>
 								</div>
 
 							</div>
@@ -228,15 +228,16 @@
 									<span>Send me updates</span>
 								</div>
 								<button id="registerSubmitButton" type="button"/>Register</button>
-									<a id="loginFromRegisterButton" href="#" rel="login" class="linkform">You have an account already? Log in here</a>
+								<a id="loginFromRegisterButton" href="#" rel="login" class="linkform">You have an account already? Log in here</a>
 								<div class="clear"></div>
 							</div>
 
 						</div>
-					</div>	
+					</form>
+				</div>	
 				
 			<!--Modal for the permanent user registration, does not have the researchs with the 4 questions-->
-			 		
+			<form id="">	 		
 				<div id="registerModal" class="modal-content">
 				  <div class="modal-content"> 
 					  <div class="modal-header">
@@ -287,7 +288,7 @@
 			 
 			<!--Code for guest registration-->
 			
-			<form action="php/insert_into.php" method="post">	 
+			<form id="guestRegisterForm">	 
 			 	 <div class="guestRegisterForm" id="guestRegisterPanel">
           				<div id="userInput">
 							<h3 id="guestRegisterH3" class="guestRegisterH3">Guest Register</h3>
@@ -315,11 +316,11 @@
 
 						
 					</div>	
-				</div>	
-		
+				</div>
+			</form>
 		<!-- Code for modal(popup window) after user begins creation of 
 				guest account to further ask user for their traits-->
-										
+				<form id="">						
 				<div id="guestRegisterModal" class="modal-content">
 				  <div class="modal-content"> 
 					  <div class="modal-header">
@@ -442,7 +443,7 @@
 
 					<!-- Modal footer contains the Register button -->	
 					  <div class="modal-footer">
-			  			<h3><input type="submit" value="Register" id="submitGuestRegisterButton"/></h3>
+			  			<h3><input type="submit" value="Register" id="submitGuestRegisterButton2"/></h3>
 					  </div>
 					</div>
 				</div>		
@@ -450,7 +451,7 @@
 					
 				<!-- Code for the Login section-->
 					<div class="loginContent" id="loginPanel">
-						<form action="php/login.php" method="post">
+						<form id="loginForm">
 						<div id="userInput">
 							<h3 id="loginH3">Login</h3>
 							<div>
@@ -465,8 +466,8 @@
 								<a id="forgotPassButton" href="#" rel="forgot_password" class="forgotPassButton">Forgot your password?</a>
 							</div>
 							<div id="loginBottom" class="bottom">
-								<div class="remember"><input type="checkbox" /><span>Keep me logged in</span></div>
-								<input type="submit" value="Login" formmethod="post"></input>
+								<div class="remember"><input type="checkbox" name="checkbox" "/><span>Keep me logged in</span></div>
+								<input type="submit" value="Login" id="loginFormBut"></input>
 								<a id="registerButton" href="#" rel="register" class="linkform">You don't have an account yet? Register here</a>
 								<a id="guestFromRegisterButton" href="#" rel="login" class="linkform">Want to try us out before committing? Create a guest account!</a>
 								<div class="clear"></div>
@@ -477,15 +478,15 @@
 					
 					<!--Code for the forgot your password section -->
 					<div class="forgotPassword" id="forgotPassPanel">
-					<form>
+					<form id="forgotPassForm">
 					<div id="userInput">
 						<h3 id="forgotPassH3">Forgot Password</h3>
 							<div>
-								<label>Username or Email:</label>
-								<input type="text" />
+								<label>Email:</label>
+								<input type="text" name="em"/>
 							</div>
 							<div id="forgotPassBottom" class="bottom">
-								<input type="submit" value="Send reminder"></input>
+								<input type="submit" value="Send reminder" id="submitForgotPassButton"></input>
 								<a id="loginFromForgotPassButton" href="#" rel="login" class="linkform">Suddenly remebered? Log in here</a>
 
 								<a id="registerFromForgotPassButton" href="#" rel="register" class="linkform">You don't have an account? Register here</a>
@@ -687,11 +688,148 @@
 			}
 
 	</script>
-	
+	<!--Scripts for data functionality-->
+	<script>
 
-<!--Modal for the permanent registration. Does not have reservation.-->
-	
+	//Checks if user is logged as permanment or guest.
+	$(document).ready(function() {
+		//Get form data
+		var send = $("#loginForm").serialize();
+		//Send to php file and handle return results in "ret"
+		$.ajax({
+                url: "php/cookie_check.php",
+                type: "GET",
+                success: function(ret) {
+                    if(ret["online"] === "true") {
+                        window.location.href = "profile.html";
+                    } 
+						
+                },
+                error: function(jqXHR, exception) {
+                    console.log(jqXHR);
+                }
+          });
+	});
 
+	//Log user in
+    $(document).ready(function() {
+        $("#loginFormBut").click(function(event){
+            event.preventDefault();
+            var send = $("#loginForm").serialize();
+            $.ajax({
+                url: "php/login.php",
+                type: "POST",
+                data: send,
+                success: function(ret) {
+				    if(ret["error"]) {
+                        var out = "";
+                        var arr = ret["error"];
+                        for(var i=0, len = arr.length; i<len; i++){
+                            out += "- " + arr[i] + "\n";
+                        }
+                        alert(out);
+                    } else {
+                        window.location.href = "profile.html";
+                    }
+                },
+                error: function(jqXHR, exception) {
+                    console.log(jqXHR);
+                }
+            });
+        });
+
+    });
+
+	//Register
+    $(document).ready(function() {
+        $("#submitRegisterButton").click(function(event){
+            event.preventDefault();
+            var send = $("#registerForm").serialize();
+            $.ajax({
+                url: "php/insert_into.php",
+                type: "POST",
+                data: send,
+                success: function(ret) {
+                    if(ret["error"]) {
+						var out = "";
+						var arr = ret["error"];
+						for(var i=0, len = arr.length; i<len; i++){
+                        	out += "- " + arr[i] + "\n";
+						}
+						alert(out);
+                    } else {
+                        window.location.href = "index.html";
+						alert("Registered!");
+                    }
+                },
+                error: function(jqXHR, exception) {
+                    console.log(jqXHR);
+                }
+            });
+        });
+
+    });
+
+	//Password recovery
+    $(document).ready(function() {
+        $("#submitForgotPassButton").click(function(event){
+            event.preventDefault();
+            var send = $("#forgotPassForm").serialize();
+            $.ajax({
+                url: "php/forgot_pass.php",
+                type: "POST",
+                data: send,
+                success: function(ret) {
+                    if(ret["msg"]) {
+                        var out = "";
+                        var arr = ret["msg"];
+                        for(var i=0, len = arr.length; i<len; i++){
+                            out += "- " + arr[i] + "\n";
+                        }
+                        alert(out);
+                    } 
+                },
+                error: function(jqXHR, exception) {
+                    console.log(jqXHR);
+                }
+            });
+        });
+
+    });
+
+	//Guest register
+    $(document).ready(function() {
+        $("#submitGuestRegisterButton2").click(function(event){
+            event.preventDefault();
+            var send = $("#guestRegisterForm").serialize();
+            $.ajax({
+                url: "php/guest_insert_into.php",
+                type: "POST",
+                data: send,
+                success: function(ret) {
+                    if(ret["error"]) {
+                        var out = "";
+                        var arr = ret["error"];
+                        for(var i=0, len = arr.length; i<len; i++){
+                            out += "- " + arr[i] + "\n";
+                        }
+                        alert(out);
+                    } else {
+						window.location.href = "profile.html";
+						alert("Guest Account Created!");
+					}
+                },
+                error: function(jqXHR, exception) {
+                    console.log(jqXHR);
+                }
+            });
+        });
+
+    });
+
+
+	</script>
+	<!--Modal for the permanent registration. Does not have reservation.-->
 	
 	</div>
   </body>
