@@ -12,6 +12,12 @@ html {
 }
 body {
   margin: 0;
+  background-color: #EEF3E2;
+}
+
+.push{
+  height: 320px;
+  background-color: #EEF3E2;
 }
 
 navbarTopFixed{
@@ -26,7 +32,7 @@ navbarTopFixed{
 
 
 }
-/* 
+/*
 Personal css formats for div
 Beginning
 */
@@ -72,7 +78,7 @@ img{
 	-webkit-transition: all 0.4s ease-in-out 0s;
 	-ms-transition: all 0.4s ease-in-out 0s;
 	transition: all 0.4s ease-in-out 0s;
-	
+
 }
 
 .contentImages:hover .contentTextHover,
@@ -120,13 +126,13 @@ img{
 }
 /*banner class style for font*/
 .banner {
-	text-shadow:1px 1px 2px black, 
+	text-shadow:1px 1px 2px black,
 				2px 2px 2px black,
 				4px 4px 2px black;
 }
 /*advertisement class style for font*/
 .advertisement {
-	text-shadow:1px 1px 2px black, 
+	text-shadow:1px 1px 2px black,
 				2px 2px 2px black,
 				4px 4px 2px black;
 }
@@ -139,24 +145,24 @@ footer {
 	color: white;
 	position: absolute;
 	bottom:0px;
-	
+
 }
 
 #about_us{
 	 float:left;
-	 width:33%;  
+	 width:33%;
 	 padding:5px;
 	 text-align: left;
 }
 #contacts{
 	 float:left;
-	 width:33%;        
+	 width:33%;
 	 text-align:left;
 	 padding:5px;
 }
 #get_started{
 	float: left;
-	width:33%; 
+	width:33%;
 	text-align: left;
 	padding:5px;
 }
@@ -213,7 +219,7 @@ footer {
 	color: white;
 	font-size: 25px;
 	border-bottom: 1px solid #ddd;
-	
+
 }
 
 /*The register/login bottom style*/
@@ -236,7 +242,7 @@ footer {
 	color:#ffa800;
 	text-shadow:1px 1px 1px #000;
 	font-size: 12px;
-	
+
 }
 
 /*Forgot your password link on login*/
@@ -302,20 +308,20 @@ this css style is for the login/register/send reminder buttons*/
 	font-size:16px;
 	width:76%;
 	background: #FFFFFF;
-	background: 
+	background:
 		-webkit-gradient(
-			linear, 
-			left top, 
-			left 25, 
-			from(#FFFFFF), 
-			color-stop(4%, #EEEEEE), 
+			linear,
+			left top,
+			left 25,
+			from(#FFFFFF),
+			color-stop(4%, #EEEEEE),
 			to(#FFFFFF)
 		);
-	background: 
+	background:
 		-moz-linear-gradient(
-			top, 
+			top,
 			#FFFFFF,
-			#EEEEEE 1px, 
+			#EEEEEE 1px,
 			#FFFFFF 25px
 			);
 	-moz-box-shadow: 0px 0px 8px #f0f0f0;
@@ -417,7 +423,7 @@ creation procress by asking them for their traits*/
 }
 
 .modalColumn{
-	width: 50%;	
+	width: 50%;
 	float: left;
 }
 
@@ -447,9 +453,55 @@ creation procress by asking them for their traits*/
 	padding-right: 5px;
 }
 
-.portrait{
-	width: 50%;
-	text-align: center;
+.profile-card{display: block;}
+
+.av{display: block;}
+
+.info-user{display: block;}
+
+.game-log{display: block;}
+
+.reserve-block{display: block;}
+
+.profile{
+  display: block;
+  padding-top: 75px;
+  padding-right: 50px;
+}
+
+.profile .card {
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);*/
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+}
+
+.profile .title {
+    color: grey;
+    font-size: 18px;
+}
+
+.profile button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+.profile a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+}
+
+.profile button:hover, a:hover {
+    opacity: 0.7;
 }
 
 /*End of Profile page CSS section*/
@@ -460,7 +512,7 @@ Parts of CSS for About Us page like the cards, H3TitleCenter and paragraph cente
 is near the bottom of the css page on lines 7265-7297*/
 .card {
 		background-color: white;
-		border-radius: 6px;	
+		border-radius: 6px;
 		margin-bottom: 20px;
 }
 
@@ -489,7 +541,7 @@ is near the bottom of the css page on lines 7265-7297*/
 	opacity: 1;
 	-webkit-transition: .333s ease top, .333s ease opacity;
 	transition: .333s ease top, .333s ease opacity;
-	
+
 }
 
 .formControl {
@@ -499,12 +551,12 @@ is near the bottom of the css page on lines 7265-7297*/
    	border-style: none none solid none;
    	box-shadow: none;
 	padding: 20px;
-	
+
 }
 .formControl:focus {
 	box-shadow: none;
 	border-color: #5e9bfc;
-	
+
 }
 
 .btn-start-order {
@@ -569,7 +621,7 @@ a {
 a:active,
 a:hover {
   outline: 0;
-  
+
 }
 abbr[title] {
   border-bottom: 1px dotted;
@@ -5028,7 +5080,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 	opacity: .9;
 	position: fixed;
 	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, "sans-serif";
-		
+
 }
 .navbar-default .navbar-brand {
     color: #FFFFFF;
@@ -6481,7 +6533,7 @@ button.close {
   position: relative;
   padding: 15px 15px 25px 15px;
   border-bottom: 1px solid #e5e5e5;
-  
+
 }
 .modal-footer {
   padding: 10px;
@@ -7342,7 +7394,5 @@ button.close {
 	position: relative;
 	margin: 20px;
 	font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'DejaVu Sans', Verdana, 'sans-serif';
-	
+
 }
-
-
