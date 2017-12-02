@@ -1,29 +1,28 @@
 <?php
 include 'db_connect.php';
 
-$id = $course = $time_date = "";
+$id = $course = $res_date = $res_time = "";
 $fail = false;
 
-if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["u_id"]) && isset($_POST["course"]) && isset($_POST["time_date"])) {
+if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["u_id"]) && isset($_POST["course"]) && isset($_POST["res_date"]) && isset($_POST["res_time"])) {
 
 	//Get values and trim spaces, strip input of html and php tags, escape input
 	$id = mysqli_real_escape_string($conn, strip_tags(trim($_POST["u_id"])));
 	$course = mysqli_real_escape_string($conn, strip_tags(trim($_POST["course"])));
-	$time_date = mysqli_real_escape_string($conn, strip_tags(trim($_POST["time_date"])));
+	$res_date = mysqli_real_escape_string($conn, strip_tags(trim($_POST["res_date"])));
+	$res_time = mysqli_real_escape_string($conn, strip_tags(trim($_POST["res_time"])));
 
 } else {
 	$fail = true;
-	echo 'fuck';
 }
 
-if(strcmp($id, "") === 0 || strcmp($course, "") === 0 || strcmp($time_date, "") === 0){
+if(strcmp($id, "") === 0 || strcmp($course, "") === 0 || strcmp($res_date, "") === 0 || strcmp($res_time, "") === 0){
 	$fail = true;
-	echo 'fucking shit';
 }
 
 if($fail === false){
-$sql = $conn->prepare("INSERT INTO REQUEST(USER_ID, TIME_D, PARK_ID) VALUES(?, ?, ?)");
-$sql->bind_param("isi", $id, $time_date, $course);
+$sql = $conn->prepare("INSERT INTO REQUEST(USER_ID, RES_DATE, RES_TIME, PARK_ID) VALUES(?, ?, ?, ?)");
+$sql->bind_param("isi", $id, $res_date, $res_time, $course);
 
 if(!($sql->execute())) echo "<br>" . $sql->error;
 
