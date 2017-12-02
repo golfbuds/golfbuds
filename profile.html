@@ -1,160 +1,231 @@
-<?php session_start(); ?>
+<?php
+
+session_start();
+
+include 'php/db_connect.php';
+
+$sql = "SELECT TIME_D, PARK_ID
+FROM request WHERE USER_ID = '{$_SESSION['ID']}'";
+
+//'{$_SESSION['username']}
+//(SELECT ID FROM users WHERE $_SESSION["FNAME"] = FNAME)
+
+$query = mysqli_query($conn, $sql);
+
+if (!$query) {
+  die ('SQL Error: ' . mysqli_error($conn));
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1" >
-    <title>GolfBuds</title>
-    <!-- Bootstrap -->
-	<link href="css/bootstrap.css" rel="stylesheet">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1" >
+  <title>GolfBuds</title>
 
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-		<![endif]-->
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-	<script src="js/jquery-1.11.3.min.js"></script>
-	<script src="js/bootstrap.js"></script>
-	
-	<!-- Head tag contents from Ravneet-->
-	
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com /bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-	
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-	
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/pikaday.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/jquery.timepicker.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/jquery.timepicker.css" />
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-
-	b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-	
-		<!-- Custom styles for this template -->
-			
-  </head>
-  <body style="padding-top: 5px">
+</head>
+<body style="padding-top: 5px">
   <div id="wrapper">
   	<div class="navbarTopFixed">
   		<nav class="navbar navbar-default navbar-fixed-top">
          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topFixedNavbar1" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-            <a class="navbar-brand" href="index.html">GolfBuds</a></div>
+           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topFixedNavbar1" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            <a href="index.html" class="navbar-brand"><img src="images/GB_Icon1_noShadow.png" id="gbLogo"></a></div>
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="topFixedNavbar1">
-            <form class="navbar-form navbar-left" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
-              </div>
-              <button type="submit" class="btn btn-default">Submit</button>
-            </form>
-            
-            <!--Welcome user drop down menu -->
-            <!--Icon Sizes for each item on the drop down menu should be abou 128 x128 pixels -->
-            <!--Icon finding website: https://www.iconfinder.com/ -->
-            <div id="profileDropDownMenu" class="btn-group">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<?php echo "Welcome, " . $_SESSION["fname"] . " " . $_SESSION["lname"]; ?><span class="caret"></span></button>
-              <ul class="dropdown-menu">
-                <li role="presentation"><a href="#"><img src="images/preferenceIcon.png" width="8%">&nbsp;Preferences</a></li>
-                <li role="presentation"><a href="#"><img src="images/messageIcon.png" width="8%">&nbsp;Contact Support</a></li>
-                <li role="presentation" class="divider"></li>
-                <li role="presentation"><a href="php/logout.php"><img src="images/logoutIcon.png" width="10%">&nbsp;Logout</a></li>
-              </ul>
-            </div>           
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="ContactUs.html">Contact Us</a></li>
+              <li><a href="aboutUs.html">About Us</a></li>
+              <li><a href="index.html" style="margin-right: 10px;">Sign in</a></li>
+            </ul>
           </div>
          </nav>
        </div>
-       
-     <!--Main Content starts Here-->
-       
-  		<div class="jumbotron">
-		<p>Top of Jumbotron</p>
-		  <div class="row">
-				<div class="row">
-				  <div class="col-md-6">
-				  		<img src="av.png" style="width: 20%; padding-left: 20px; ">
-				  </div>
-				  <div class="col-md-6">
-				  		<h3> <?php echo $_SESSION["fname"] . " " . $_SESSION["lname"];  ?> </h3>
-						<p>misc</p>
-						<p>misc</p>
-						<p>misc</p>
-						<p>misc</p>
-				  </div>
-		    </div>
-<!--<div class="column">
-					<img src="av.png" style="width: 10%;">
-				</div>
-
-				<div class="col-lg-2 col-md-4 col-md-offset-8">
-					<h3>Name</h3>
-					<p>misc</p>
-					<p>misc</p>
-					<p>misc</p>
-					<p>misc</p>
-				</div>
-				-->
-			</div>
-
-                <button type="submit" class="btn-default float-left">Request</button>
-				<button type="submit" class="btn-default float-left">Send Message</button>
- 		  <button type="submit" class="btn-default float-right">Report</button>
-
-		</div>
-
-	<div class="row">
-			<div class="col-lg-6">
-				<h4>Course Reservation Log</h4>
-                    <p>Time -- Date -- Course</p>
-                    <a href="#">Cancel</a>
-			</div>
-
-			<div class="col-lg-6">
-				<h4>Make A Reservation</h4>
-                    <input type="password" class="form-control" id="inputPassword" placeholder="Date">
-                    <input type="password" class="form-control" id="inputPassword" placeholder="Time">
-                    <input type="password" class="form-control" id="inputPassword" placeholder="Course">
-                    <button class="btn float-right">Find a Match</button>
+            <!--Welcome user drop down menu -->
+            <!--Icon Sizes for each item on the drop down menu should be abou 128 x128 pixels -->
+            <!--Icon finding website: https://www.iconfinder.com/ -->
+        <!--    <div id="profileDropDownMenu" class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <?php echo "Welcome, " . $_SESSION["ID"] . " " . $_SESSION["FNAME"] . " " . $_SESSION["LNAME"]; ?><span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li role="presentation"><a href="#"><img src="images/preferenceIcon.png" width="8%">&nbsp;Preferences</a></li>
+                  <li role="presentation"><a href="#"><img src="images/messageIcon.png" width="8%">&nbsp;Contact Support</a></li>
+                  <li role="presentation" class="divider"></li>
+                  <li role="presentation"><a href="php/logout.php"><img src="images/logoutIcon.png" width="10%">&nbsp;Logout</a></li>
+                </ul>
+              </div>
             </div>
-	</div>
-    <!--This is the footer section -->
-    <footer id="footer" class="col-lg-12">
-    	    <div id="about_us"> <h4 align="center"><b>About Us</b></h4>
-				<ul style="list-style: none;">
-  	    			<li>Who are we?</li>
-   	    			<li>What do we offer?</li>    	    
-    	  		</ul>
-    	    </div>
-    		<div id="contacts"><h4 align="center"><b>Contacts</b></h4>
-    			<ul style="list-style: none;">
-  	    			<li>Call us 1-800-Golf-Bud</li>
-   	    			<li>Email Us</li>    	    
-   				</ul>
-   			</div>
-    		<div id="get_started"><h4 align="center"><b>Getting Started</b></h4>
-    			<ul style="list-style: none;">
-  	    			<li>Login/Register</li>
-   	    			<li>Try us out as a guest</li>    	    
-    	    	</ul>
-    		</div>
-    		<div id="copyright">Copyright © 2017 Golfbuds. All rights reserved. <a>Privacy Policy</a> | <a>Terms of Use</a> | <a>Legal</a>	 | <a>Site Map</a>
- 			 </div>
-    </footer>
+          </nav>
+        </div>
+      </div>-->
 
-  	<!-- Include all compiled plugins (below), or include individual files as needed --> 
-	
+      <!--Main Content starts Here-->
+      <div class="container">
+        <div class="profile">
+          <div class="row">
+            <!-- Add icon library -->
+            <div class="col-md-6">
+              <div class="card">
+                <img src="https://storage.forums.net/6479407/images/vagmAzMznjBJGQf_sumV.png" alt="John" style="width:100%">
+                <h1>Example</h1>
+
+                <p><button>Contact</button></p>
+              </div>
+            </div>
+            <!--<div class="profile-card">
+            <div class="av">
+            <img src="http://dk6kcyuwrpkrj.cloudfront.net/wp-content/uploads/sites/45/2014/05/avatar-blank.jpg">
+          </div>
+          <div class="info-user">
+          <p>info1</p>
+          <p>info1</p>
+          <p>info1</p>
+          <p>info1</p>
+        </div>
+      </div>-->
+
+      <div class="col-md-6">
+        <div class="game-log">
+          <h3>Reservation Log</h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>NO</th>
+                <th>Course</th>
+                <th>Date</th>
+                <th>Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              $no 	= 1;
+              $total 	= 0;
+              while ($row = mysqli_fetch_array($query))
+              {
+
+                echo '<tr>
+                  <td>'.$no.'</td>
+                  <td>'.$row['PARK_ID'].'</td>
+                  <td>'.$row['RES_DATE'].'</td>
+                  <td>'.$row['RES_TIME'].'</td>
+                </tr>';
+                $no++;
+              }?>
+            </tbody>
+          </table>
+        </div>
+        <h3>Make a Reservation</h3>
+        <div class="reserve-block">
+          <form action="php/reserve.php" method="post">
+            <!--Pick Course-->
+            <div class="row">
+              <div class="col-md-5">
+                <p>Select A Course</p>
+                <select class="form-control" name="course" value="course">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+            </div>
+            <!-- date/time -->
+
+            <br>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p>Choose date and time of reservation</p>
+                Date: <input type="text" size="16" type="text" name="res_date" class="form-control" id="datepicker">
 
 
-	</div>
+              <p>
+
+              </p>
+              Time: <input size="10" id="basicExample" name="res_time" type="text" class="form-control" />
+            </div>
+            <script>
+            $(function() {
+              $('#basicExample').timepicker();
+            });
+            </script>
+
+
+          </div>
+
+          <br>
+
+          <!--Button-->
+          <input type="hidden" name="u_id" value="<?php echo $_SESSION['ID']; ?>" />
+
+          <input class="btn"type="submit" value="submit" formmethod="post"></input>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+</div>
+
+<div class="push"></div>
+
+<div class="foot">
+<footer class="col-lg-12">
+      <div id="about_us"> <h4 align="left"><b>About Us</b></h4>
+    <ul style="list-style: none;">
+          <a href="aboutUs.html"><li>Who are we?</li></a>
+        </ul>
+      </div>
+    <div id="contacts"><h4 align="left"><b>Contacts</b></h4>
+      <ul style="list-style: none;">
+          <li>Call us 1-800-Golf-Bud</li>
+          <a href="ContactUs.html"><li>Get in touch with us</li></a>
+      </ul>
+    </div>
+    <div id="get_started"><h4 align="left"><b>Getting Started</b></h4>
+      <ul style="list-style: none;">
+          <a href="index.html"><li>Login/Register</li></a>
+          <a href="index.html"><li>Try us out as a guest</li></a>
+      <a href="ContactUs.html"><li>Want to sign up as a course?</li></a>
+        </ul>
+    </div>
+    <div id="copyright">Copyright © 2017 Golfbuds. All rights reserved. <a>Privacy Policy</a> | <a>Terms of Use</a> | <a>Legal</a>	| <a>Site Map</a>
+   </div>
+</footer>
+</div>
+<!--This is the footer section -->
+
+
+
 </body>
+<script src="js/pikaday.js"></script>
+<script>
 
-<script type="text/javascript">
-	alert("<?php echo $_SESSION["report"] ?>");
+var picker = new Pikaday(
+  {
+    field: document.getElementById('datepicker'),
+    firstDay: 1,
+    minDate: new Date(),
+    maxDate: new Date(2020, 12, 31),
+    yearRange: [2000,2020],
+  });
+
+  </script>
+  <script type="text/javascript">
+  alert("<?php echo $_SESSION["report"] ?>");
 </script>
 </html>
-
-
-
