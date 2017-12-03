@@ -37,9 +37,16 @@ $query = mysqli_query($conn, $sql);
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="topFixedNavbar1">
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="ContactUs.html">Contact Us</a></li>
-              <li><a href="aboutUs.html">About Us</a></li>
-              <li><a href="index.html" style="margin-right: 10px;">Sign in</a></li>
+	<div id="profileDropDownMenu" class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <?php echo "Welcome, " . $_SESSION["ID"] . " " . $_SESSION["FNAME"] . " " . $_SESSION["LNAME"]; ?><span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li role="presentation"><a href="#"><img src="images/preferenceIcon.png" width="8%">&nbsp;Preferences</a></li>
+                  <li role="presentation"><a href="#"><img src="images/messageIcon.png" width="8%">&nbsp;Contact Support</a></li>
+                  <li role="presentation" class="divider"></li>
+                  <li role="presentation"><a href="php/logout.php"><img src="images/logoutIcon.png" width="10%">&nbsp;Logout</a></li>
+                </ul>
+              </div>
             </ul>
           </div>
          </nav>
