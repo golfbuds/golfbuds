@@ -25,7 +25,11 @@ $query = mysqli_query($conn, $sql);
   <script type="text/javascript" src="js/jquery.timepicker.js"></script>
   <script type="text/javascript" src="js/moment.js"></script>
   <link rel="stylesheet" type="text/css" href="css/jquery.timepicker.css" />
-
+  	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">	  
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>	 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="js/bootstrap.js"></script>
 </head>
 <body style="padding-top: 5px">
   <div id="wrapper">
@@ -36,8 +40,8 @@ $query = mysqli_query($conn, $sql);
             <a href="index.html" class="navbar-brand"><img src="images/GB_Icon1_noShadow.png" id="gbLogo"></a></div>
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="topFixedNavbar1">
-            <ul class="nav navbar-nav navbar-right">
-	<div id="profileDropDownMenu" class="btn-group">
+            <ul class="nav navbar-nav navbar-right" style="margin-right:15px;">
+            <div id="profileDropDownMenu" class="btn-group">
               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <?php echo "Welcome, " . $_SESSION["ID"] . " " . $_SESSION["FNAME"] . " " . $_SESSION["LNAME"]; ?><span class="caret"></span></button>
                 <ul class="dropdown-menu">
@@ -51,6 +55,7 @@ $query = mysqli_query($conn, $sql);
           </div>
          </nav>
        </div>
+
             <!--Welcome user drop down menu -->
             <!--Icon Sizes for each item on the drop down menu should be abou 128 x128 pixels -->
             <!--Icon finding website: https://www.iconfinder.com/ -->
